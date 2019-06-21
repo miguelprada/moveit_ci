@@ -59,6 +59,7 @@ function run_docker() {
         -e UPSTREAM_WORKSPACE \
         -e TRAVIS_BRANCH \
         -e TRAVIS_OS_NAME \
+        -e TRAVIS_PULL_REQUEST \
         -e TEST \
         -e TEST_BLACKLIST \
         -e WARNINGS_OK \
