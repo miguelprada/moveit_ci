@@ -123,7 +123,7 @@ if [ "$ABI_BASE_URL" == "generate" ] ; then
 		abi_dump old "$lib" "${ROS_WS}/install/lib:/opt/ros/$ROS_DISTRO/lib" "${ROS_WS}/install/include" \
 					"${ROS_WS}/install/dump/${lib_name}.dump"
 	done
-elif [ "$TRAVIS_PULL_REQUEST" != false ]; then
+else
 	# For a pull request, actually perform the abi check
 	test "$TRAVIS" == true && abi_install
 	# fetch and extract old abi from $ABI_BASE_URL
@@ -133,7 +133,6 @@ elif [ "$TRAVIS_PULL_REQUEST" != false ]; then
 	travis_run abi_check \
 			"${ROS_WS}/install/lib" "${ROS_WS}/install/include" \
 			"${ABI_TMP_DIR}/old/lib" "${ABI_TMP_DIR}/old/include"
-else
+
 	# TODO: If this commit is a release, push the install folder to ABI_BASE_URL
-	:
 fi
